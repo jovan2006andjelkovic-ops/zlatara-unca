@@ -3,766 +3,203 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Zlatara Unca — Fini nakit, verenično prstenje i burme</title>
+<title>Zlatara Unca — Zlato i srebro po meri trenutka</title>
+<meta name="description" content="Zlatara Unca — vereničko prstenje, burme, zlatnici i brendovani nakit. Ručna izrada, poverenje generacija.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-:root{
-  --pearl:#F5F1E9;
-  --pearl-warm:#EFE9DC;
-  --pine:#123128;
-  --pine-deep:#0C231C;
-  --gold:#B4934F;
-  --gold-soft:#D7BE8B;
-  --espresso:#2B241D;
-  --stone:#7E7568;
-  --line:rgba(43,36,29,.14);
-  --line-gold:rgba(180,147,79,.4);
-  --serif:'Cormorant Garamond',Georgia,serif;
-  --sans:'Jost',system-ui,sans-serif;
-  --ease:cubic-bezier(.2,.7,.2,1);
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  font-family:var(--sans);
-  background:var(--pearl);
-  color:var(--espresso);
-  font-weight:300;
-  line-height:1.6;
-  -webkit-font-smoothing:antialiased;
-  overflow-x:hidden;
-}
-a{color:inherit;text-decoration:none}
-img{display:block;max-width:100%}
-::selection{background:var(--pine);color:var(--pearl)}
-
-.wrap{max-width:1240px;margin:0 auto;padding:0 28px}
-.eyebrow{
-  font-size:11px;letter-spacing:.32em;text-transform:uppercase;
-  font-weight:400;color:var(--gold);display:inline-flex;align-items:center;gap:12px;
-}
-.eyebrow::before{content:"";width:26px;height:1px;background:var(--gold);opacity:.7}
-.serif{font-family:var(--serif)}
-
-/* ---------- Hallmark signature ---------- */
-.hallmark{
-  display:inline-flex;align-items:center;gap:7px;
-  font-family:var(--serif);font-size:13px;letter-spacing:.08em;
-  border:1px solid var(--line-gold);border-radius:40px;
-  padding:4px 12px;color:var(--gold);white-space:nowrap;
-}
-.hallmark::before{content:"";width:5px;height:5px;background:var(--gold);border-radius:50%;transform:rotate(45deg)}
-
-/* measurement ruler */
-.ruler{height:14px;width:100%;position:relative;opacity:.5}
-.ruler::before{content:"";position:absolute;top:50%;left:0;right:0;height:1px;background:var(--line-gold)}
-.ruler-ticks{display:flex;justify-content:space-between;height:14px}
-.ruler-ticks span{width:1px;height:14px;background:var(--line-gold)}
-.ruler-ticks span:nth-child(5n+1){height:14px}
-.ruler-ticks span:not(:nth-child(5n+1)){height:7px;align-self:center}
-
-/* ---------- Announcement ---------- */
-.announce{
-  background:var(--pine-deep);color:var(--pearl);
-  font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;text-align:center;
-  padding:9px 20px;font-weight:400;
-}
-.announce b{color:var(--gold-soft);font-weight:500}
-
-/* ---------- Header ---------- */
-header{
-  position:sticky;top:0;z-index:60;background:rgba(245,241,233,.86);
-  backdrop-filter:blur(14px);border-bottom:1px solid var(--line);
-  transition:padding .4s var(--ease);
-}
-.nav{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:82px;transition:height .4s var(--ease)}
-header.shrink .nav{height:66px}
-.nav-links{display:flex;gap:30px;align-items:center}
-.nav-links a{
-  font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:400;
-  position:relative;padding:6px 0;color:var(--espresso);transition:color .3s
-}
-.nav-links a::after{
-  content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--gold);transition:width .35s var(--ease)
-}
-.nav-links a:hover{color:var(--gold)}
-.nav-links a:hover::after{width:100%}
-.brand{justify-self:center;text-align:center;line-height:.9}
-.brand .mark{font-family:var(--serif);font-size:30px;letter-spacing:.14em;font-weight:500;color:var(--pine)}
-.brand .sub{font-size:9px;letter-spacing:.5em;text-transform:uppercase;color:var(--gold);margin-top:5px;padding-left:.5em}
-.nav-tools{display:flex;gap:20px;align-items:center;justify-self:end}
-.icon-btn{background:none;border:none;cursor:pointer;color:var(--espresso);display:grid;place-items:center;position:relative;transition:color .3s}
-.icon-btn:hover{color:var(--gold)}
-.icon-btn svg{width:20px;height:20px;stroke-width:1.4}
-.cart-count{
-  position:absolute;top:-7px;right:-9px;background:var(--gold);color:#fff;font-size:10px;
-  min-width:16px;height:16px;border-radius:50%;display:grid;place-items:center;font-family:var(--sans);font-weight:500
-}
-.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
-.burger span{width:24px;height:1.5px;background:var(--espresso);transition:.3s}
-
-/* ---------- Hero ---------- */
-.hero{background:var(--pine);color:var(--pearl);position:relative;overflow:hidden}
-.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;min-height:640px;align-items:center}
-.hero-copy{padding:80px 60px 80px 0}
-.hero .eyebrow{color:var(--gold-soft)}
-.hero .eyebrow::before{background:var(--gold-soft)}
-.hero h1{
-  font-family:var(--serif);font-weight:400;
-  font-size:clamp(48px,6vw,86px);line-height:1.02;letter-spacing:-.01em;margin:26px 0 8px;
-}
-.hero h1 em{font-style:italic;color:var(--gold-soft)}
-.hero p.lead{max-width:440px;color:rgba(245,241,233,.72);font-size:16px;margin-top:18px;font-weight:300}
-.hero-actions{display:flex;gap:16px;margin-top:38px;flex-wrap:wrap}
-.btn{
-  font-family:var(--sans);font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:400;
-  padding:15px 30px;border:1px solid var(--gold);cursor:pointer;transition:.35s var(--ease);display:inline-flex;align-items:center;gap:10px
-}
-.btn-gold{background:var(--gold);color:var(--pine-deep);border-color:var(--gold)}
-.btn-gold:hover{background:var(--gold-soft);border-color:var(--gold-soft)}
-.btn-ghost{background:transparent;color:var(--pearl);border-color:rgba(215,190,139,.45)}
-.btn-ghost:hover{border-color:var(--gold-soft);color:var(--gold-soft)}
-.hero-media{position:relative;height:100%;min-height:640px}
-.hero-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.hero-media::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--pine) 0%,transparent 34%)}
-.hero-badge{
-  position:absolute;left:-46px;bottom:66px;z-index:3;background:var(--pearl);color:var(--pine-deep);
-  padding:20px 26px;border-radius:2px;box-shadow:0 30px 60px rgba(12,35,28,.35);max-width:220px
-}
-.hero-badge .n{font-family:var(--serif);font-size:34px;line-height:1;color:var(--gold)}
-.hero-badge .t{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--stone);margin-top:8px}
-.hero-ruler{position:absolute;left:0;bottom:0;right:0;padding:0 60px 22px 0}
-
-/* ---------- Trust strip ---------- */
-.trust{border-bottom:1px solid var(--line);background:var(--pearl-warm)}
-.trust-grid{display:grid;grid-template-columns:repeat(4,1fr)}
-.trust-item{padding:26px 24px;display:flex;gap:14px;align-items:center;border-right:1px solid var(--line)}
-.trust-item:last-child{border-right:none}
-.trust-item svg{width:26px;height:26px;stroke:var(--gold);stroke-width:1.2;flex-shrink:0}
-.trust-item .h{font-size:13px;letter-spacing:.02em;color:var(--espresso);font-weight:400}
-.trust-item .s{font-size:11.5px;color:var(--stone)}
-
-/* ---------- Section base ---------- */
-section.block{padding:96px 0}
-.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:44px}
-.sec-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(32px,4vw,50px);line-height:1.05;margin-top:14px}
-.sec-head .link{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--espresso);border-bottom:1px solid var(--gold);padding-bottom:4px;white-space:nowrap;transition:.3s}
-.sec-head .link:hover{color:var(--gold)}
-
-/* ---------- Categories ---------- */
-.cat-grid{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:220px;gap:16px}
-.cat{position:relative;overflow:hidden;background:var(--pine);cursor:pointer}
-.cat img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease);opacity:.92}
-.cat::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(12,35,28,.78) 0%,rgba(12,35,28,.05) 60%)}
-.cat:hover img{transform:scale(1.07)}
-.cat .label{position:absolute;left:22px;bottom:20px;z-index:2;color:var(--pearl)}
-.cat .label .k{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-soft);display:block;margin-bottom:5px}
-.cat .label .n{font-family:var(--serif);font-size:24px}
-.cat.big{grid-column:span 3;grid-row:span 2}
-.cat.wide{grid-column:span 3}
-.cat.tall{grid-column:span 2;grid-row:span 2}
-.cat.reg{grid-column:span 2}
-
-/* ---------- Products ---------- */
-.prod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px 24px}
-.card{background:transparent;position:relative}
-.card-media{position:relative;overflow:hidden;background:var(--pearl-warm);aspect-ratio:4/5;margin-bottom:16px}
-.card-media img{width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease),opacity .5s}
-.card:hover .card-media img{transform:scale(1.06)}
-.card-tag{position:absolute;top:14px;left:14px;z-index:3;background:var(--pearl);color:var(--gold);
-  font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;padding:5px 11px;font-weight:400}
-.card-fav{position:absolute;top:12px;right:12px;z-index:3;background:rgba(245,241,233,.85);border:none;
-  width:34px;height:34px;border-radius:50%;display:grid;place-items:center;cursor:pointer;opacity:0;transform:translateY(-6px);transition:.35s var(--ease)}
-.card:hover .card-fav{opacity:1;transform:translateY(0)}
-.card-fav svg{width:16px;height:16px;stroke:var(--espresso);stroke-width:1.4;fill:none}
-.card-fav.on svg{fill:var(--gold);stroke:var(--gold)}
-.card-add{
-  position:absolute;left:0;right:0;bottom:0;z-index:3;background:var(--pine);color:var(--pearl);border:none;
-  font-family:var(--sans);font-size:11px;letter-spacing:.2em;text-transform:uppercase;padding:15px;cursor:pointer;
-  transform:translateY(100%);transition:transform .4s var(--ease);
-}
-.card:hover .card-add{transform:translateY(0)}
-.card-add:hover{background:var(--gold);color:var(--pine-deep)}
-.card-cat{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
-.card h3{font-family:var(--serif);font-weight:500;font-size:19px;line-height:1.25;margin:7px 0 9px;letter-spacing:.01em}
-.card h3 a:hover{color:var(--gold)}
-.price{font-family:var(--sans);font-size:14px;font-weight:400;color:var(--espresso)}
-.price .range{color:var(--stone);font-size:13px}
-.price .old{color:var(--stone);text-decoration:line-through;margin-right:8px;font-size:13px}
-
-/* ---------- Brands ---------- */
-.brands{background:var(--pine);color:var(--pearl)}
-.brands .eyebrow{color:var(--gold-soft)}
-.brands .eyebrow::before{background:var(--gold-soft)}
-.brands h2{color:var(--pearl)}
-.brand-row{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid rgba(215,190,139,.22)}
-.brand-cell{
-  padding:46px 30px;border-bottom:1px solid rgba(215,190,139,.22);border-right:1px solid rgba(215,190,139,.22);
-  display:flex;flex-direction:column;gap:8px;transition:background .4s;cursor:pointer;position:relative;overflow:hidden
-}
-.brand-cell:nth-child(3n){border-right:none}
-.brand-cell:hover{background:var(--pine-deep)}
-.brand-cell .bn{font-family:var(--serif);font-size:27px;color:var(--pearl);transition:color .3s}
-.brand-cell:hover .bn{color:var(--gold-soft)}
-.brand-cell .bd{font-size:12px;color:rgba(245,241,233,.55);letter-spacing:.04em}
-.brand-cell .arrow{position:absolute;right:26px;top:46px;color:var(--gold);opacity:0;transform:translateX(-8px);transition:.4s var(--ease)}
-.brand-cell:hover .arrow{opacity:1;transform:translateX(0)}
-
-/* ---------- Feature (engagement) ---------- */
-.feature{position:relative;overflow:hidden}
-.feature-grid{display:grid;grid-template-columns:1fr 1fr;min-height:560px}
-.feature-media{position:relative}
-.feature-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.feature-copy{background:var(--pine-deep);color:var(--pearl);display:flex;flex-direction:column;justify-content:center;padding:80px 68px}
-.feature-copy .eyebrow{color:var(--gold-soft)}
-.feature-copy .eyebrow::before{background:var(--gold-soft)}
-.feature-copy h2{font-family:var(--serif);font-weight:400;font-size:clamp(34px,4vw,52px);line-height:1.06;margin:22px 0 18px}
-.feature-copy h2 em{font-style:italic;color:var(--gold-soft)}
-.feature-copy p{color:rgba(245,241,233,.7);max-width:400px;margin-bottom:16px}
-.feature-copy .btn{margin-top:20px;align-self:flex-start}
-.feature-hallmarks{display:flex;gap:12px;margin-top:34px;flex-wrap:wrap}
-
-/* ---------- Assurance / craft ---------- */
-.craft{background:var(--pearl-warm)}
-.craft-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.craft-item{padding:40px 34px;background:var(--pearl);border:1px solid var(--line);position:relative}
-.craft-item .num{font-family:var(--serif);font-size:15px;color:var(--gold);letter-spacing:.1em}
-.craft-item h3{font-family:var(--serif);font-weight:500;font-size:23px;margin:16px 0 10px}
-.craft-item p{font-size:14px;color:var(--stone)}
-.craft-item .ruler{margin-top:24px}
-
-/* ---------- Newsletter ---------- */
-.news{background:var(--pine);color:var(--pearl);text-align:center;padding:90px 0}
-.news h2{font-family:var(--serif);font-weight:400;font-size:clamp(30px,4vw,46px);line-height:1.1;max-width:640px;margin:20px auto 14px}
-.news p{color:rgba(245,241,233,.68);max-width:480px;margin:0 auto 34px}
-.news .eyebrow{color:var(--gold-soft);justify-content:center}
-.news .eyebrow::before{background:var(--gold-soft)}
-.news-form{display:flex;max-width:480px;margin:0 auto;border:1px solid rgba(215,190,139,.4)}
-.news-form input{flex:1;background:transparent;border:none;padding:16px 20px;color:var(--pearl);font-family:var(--sans);font-size:14px;outline:none}
-.news-form input::placeholder{color:rgba(245,241,233,.45)}
-.news-form button{background:var(--gold);color:var(--pine-deep);border:none;padding:0 30px;font-family:var(--sans);
-  font-size:11px;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;transition:.3s}
-.news-form button:hover{background:var(--gold-soft)}
-.news-note{font-size:11px;color:rgba(245,241,233,.4);margin-top:16px;letter-spacing:.04em}
-
-/* ---------- Footer ---------- */
-footer{background:var(--pine-deep);color:var(--pearl);padding:70px 0 30px}
-.foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;padding-bottom:50px;border-bottom:1px solid rgba(215,190,139,.16)}
-.foot-brand .mark{font-family:var(--serif);font-size:30px;letter-spacing:.14em;color:var(--pearl)}
-.foot-brand .sub{font-size:9px;letter-spacing:.5em;text-transform:uppercase;color:var(--gold);margin:6px 0 18px;padding-left:.5em}
-.foot-brand p{font-size:13.5px;color:rgba(245,241,233,.6);max-width:260px}
-.foot-col h4{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:18px;font-weight:400}
-.foot-col a{display:block;font-size:13.5px;color:rgba(245,241,233,.65);padding:6px 0;transition:color .3s}
-.foot-col a:hover{color:var(--gold-soft)}
-.foot-socials{display:flex;gap:12px;margin-top:20px}
-.foot-socials a{width:38px;height:38px;border:1px solid rgba(215,190,139,.3);border-radius:50%;display:grid;place-items:center;transition:.3s}
-.foot-socials a:hover{background:var(--gold);border-color:var(--gold)}
-.foot-socials svg{width:16px;height:16px;stroke:var(--pearl);stroke-width:1.4}
-.foot-socials a:hover svg{stroke:var(--pine-deep)}
-.foot-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:26px;font-size:12px;color:rgba(245,241,233,.45);flex-wrap:wrap;gap:12px}
-
-/* ---------- Reveal ---------- */
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
-.reveal.in{opacity:1;transform:none}
-
-/* ---------- Mobile menu ---------- */
-.mobile-menu{position:fixed;inset:0;background:var(--pine);z-index:80;display:flex;flex-direction:column;
-  padding:30px 28px;transform:translateX(100%);transition:transform .5s var(--ease);visibility:hidden}
-.mobile-menu.open{transform:translateX(0);visibility:visible}
-.mm-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:44px}
-.mm-top .mark{font-family:var(--serif);font-size:26px;letter-spacing:.14em;color:var(--pearl)}
-.mm-close{background:none;border:none;color:var(--pearl);cursor:pointer}
-.mm-close svg{width:26px;height:26px;stroke-width:1.4}
-.mobile-menu nav a{font-family:var(--serif);font-size:30px;color:var(--pearl);padding:14px 0;display:block;border-bottom:1px solid rgba(215,190,139,.14)}
-.mobile-menu nav a:hover{color:var(--gold-soft)}
-
-/* toast */
-.toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(120px);background:var(--pine-deep);
-  color:var(--pearl);padding:14px 26px;font-size:13px;letter-spacing:.06em;z-index:100;border:1px solid var(--line-gold);
-  transition:transform .5s var(--ease);display:flex;align-items:center;gap:10px}
-.toast.show{transform:translateX(-50%) translateY(0)}
-.toast svg{width:16px;height:16px;stroke:var(--gold-soft)}
-
-/* ---------- Responsive ---------- */
-@media(max-width:1080px){
-  .cat-grid{grid-template-columns:repeat(4,1fr)}
-  .cat.big{grid-column:span 2;grid-row:span 2}
-  .cat.wide{grid-column:span 2}
-  .prod-grid{grid-template-columns:repeat(3,1fr)}
-}
-@media(max-width:860px){
-  .nav-links{display:none}
-  .burger{display:flex}
-  .nav{grid-template-columns:auto 1fr auto}
-  .brand{justify-self:start;margin-left:14px}
-  .hero-grid{grid-template-columns:1fr}
-  .hero-copy{padding:66px 0 40px;text-align:left}
-  .hero-media{min-height:400px;order:-1}
-  .hero-media::after{background:linear-gradient(to top,var(--pine) 0%,transparent 46%)}
-  .hero-badge{left:auto;right:20px;bottom:20px;max-width:170px;padding:16px 20px}
-  .hero-ruler{padding:0 0 16px}
-  .trust-grid{grid-template-columns:1fr 1fr}
-  .trust-item:nth-child(2){border-right:none}
-  .trust-item{border-bottom:1px solid var(--line)}
-  .brand-row{grid-template-columns:1fr 1fr}
-  .brand-cell:nth-child(3n){border-right:1px solid rgba(215,190,139,.22)}
-  .brand-cell:nth-child(2n){border-right:none}
-  .feature-grid{grid-template-columns:1fr}
-  .feature-media{min-height:340px}
-  .feature-copy{padding:56px 30px}
-  .craft-grid{grid-template-columns:1fr}
-  .foot-grid{grid-template-columns:1fr 1fr;gap:34px}
-}
-@media(max-width:600px){
-  .wrap{padding:0 20px}
-  .cat-grid{grid-template-columns:1fr 1fr;grid-auto-rows:180px}
-  .cat.big,.cat.wide,.cat.tall,.cat.reg{grid-column:span 1;grid-row:span 1}
-  .cat.big{grid-column:span 2}
-  .prod-grid{grid-template-columns:1fr 1fr;gap:22px 16px}
-  .sec-head{flex-direction:column;align-items:flex-start}
-  .news-form{flex-direction:column;border:none;gap:10px}
-  .news-form input{border:1px solid rgba(215,190,139,.4)}
-  .news-form button{padding:15px}
-  .foot-grid{grid-template-columns:1fr}
-  section.block{padding:64px 0}
-}
-@media(prefers-reduced-motion:reduce){
-  *{transition:none!important;animation:none!important}
-  .reveal{opacity:1;transform:none}
-  html{scroll-behavior:auto}
-}
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Public+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+<a class="skip-link" href="#main">Pređi na sadržaj</a>
 
-<!-- Announcement -->
-<div class="announce">Besplatna dostava za porudžbine preko <b>10.000 RSD</b> &nbsp;·&nbsp; Sertifikat čistoće uz svaki komad</div>
-
-<!-- Header -->
-<header id="header">
-  <div class="wrap">
-    <div class="nav">
-      <button class="burger" id="burger" aria-label="Meni"><span></span><span></span><span></span></button>
-      <nav class="nav-links" aria-label="Glavna navigacija">
-        <a href="#kolekcije">Kolekcije</a>
-        <a href="#verenicko">Verenično</a>
-        <a href="#brendovi">Brendovi</a>
-        <a href="#izdvojeno">Izdvojeno</a>
-      </nav>
-      <a href="#" class="brand" aria-label="Zlatara Unca — početna">
-        <div class="mark">UNCA</div>
-        <div class="sub">Zlatara</div>
+<header class="site-header">
+  <div class="bar">
+    <a class="brand" href="index.html">
+      <span class="punca"><span>U<span class="k">·N·C·A</span></span></span>
+      <span>Zlatara Unca<small>Zlato · Srebro · Od 1998</small></span>
+    </a>
+    <nav class="primary" aria-label="Glavna navigacija">
+      <a href="index.html" aria-current="page">Početna</a>
+      <a href="shop.html">Shop</a>
+      <a href="o-nama.html">O nama</a>
+      <a href="kontakt.html">Kontakt</a>
+    </nav>
+    <div class="header-actions">
+      <a class="cart-pill" href="cart.html">
+        <span>Korpa</span>
+        <span class="count" data-cart-count>0</span>
       </a>
-      <div class="nav-tools">
-        <button class="icon-btn" aria-label="Pretraga"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></button>
-        <button class="icon-btn" aria-label="Nalog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></button>
-        <button class="icon-btn" aria-label="Lista želja"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 20s-7-4.6-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.4-7 10-7 10z"/></svg></button>
-        <button class="icon-btn" id="cartBtn" aria-label="Korpa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 6h15l-1.5 9h-12z"/><path d="M6 6L5 3H2"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg><span class="cart-count" id="cartCount">0</span></button>
-      </div>
+      <button class="nav-toggle" aria-label="Otvori meni">☰</button>
     </div>
   </div>
 </header>
 
-<!-- Mobile menu -->
-<div class="mobile-menu" id="mobileMenu">
-  <div class="mm-top">
-    <span class="mark">UNCA</span>
-    <button class="mm-close" id="mmClose" aria-label="Zatvori meni"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+<div class="mobile-drawer">
+  <div class="drawer-top">
+    <span class="brand"><span class="punca"><span>U</span></span></span>
+    <button class="close-btn" aria-label="Zatvori meni">✕</button>
   </div>
   <nav>
-    <a href="#kolekcije">Kolekcije</a>
-    <a href="#verenicko">Verenično prstenje</a>
-    <a href="#brendovi">Brendovi</a>
-    <a href="#izdvojeno">Izdvojeno</a>
-    <a href="#kontakt">Kontakt</a>
+    <a href="index.html">Početna</a>
+    <a href="shop.html">Shop</a>
+    <a href="o-nama.html">O nama</a>
+    <a href="kontakt.html">Kontakt</a>
+    <a href="cart.html">Korpa (<span data-cart-count>0</span>)</a>
   </nav>
 </div>
 
-<!-- Hero -->
-<section class="hero">
-  <div class="wrap">
-    <div class="hero-grid">
-      <div class="hero-copy">
-        <span class="eyebrow">Fini nakit od 1998.</span>
-        <h1>Svaki gram<br>nosi <em>priču</em>.</h1>
-        <p class="lead">Verenično prstenje, burme i ručno birani komadi od zlata i srebra — sa žigom čistoće i garancijom porekla za svaki gram.</p>
-        <div class="hero-actions">
-          <a href="#izdvojeno" class="btn btn-gold">Istraži kolekciju</a>
-          <a href="#verenicko" class="btn btn-ghost">Verenično prstenje</a>
-        </div>
-      </div>
-      <div class="hero-media">
-        <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=1200&q=80" alt="Dijamantsko verenično prstenje" loading="eager">
-        <div class="hero-badge">
-          <div class="n">Au 585</div>
-          <div class="t">Žigosano zlato 14K · Overeno</div>
-        </div>
-      </div>
-    </div>
-    <div class="hero-ruler ruler-holder"></div>
-  </div>
-</section>
+<main id="main">
 
-<!-- Trust -->
-<div class="trust">
-  <div class="wrap">
-    <div class="trust-grid">
-      <div class="trust-item">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M3 8h13l3 4v4h-3M3 8v8h3M6 16h7M9 18a2 2 0 104 0M19 18a2 2 0 100-4"/></svg>
-        <div><div class="h">Besplatna dostava</div><div class="s">za iznose preko 10.000 RSD</div></div>
-      </div>
-      <div class="trust-item">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
-        <div><div class="h">Sigurna kupovina</div><div class="s">zaštićeno online plaćanje</div></div>
-      </div>
-      <div class="trust-item">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M12 3a9 9 0 100 18 9 9 0 000-18z"/><path d="M12 7v5l3 2"/></svg>
-        <div><div class="h">Stručna podrška</div><div class="s">savet pre i posle kupovine</div></div>
-      </div>
-      <div class="trust-item">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-6-5-6-10a6 6 0 1112 0c0 5-6 10-6 10z"/><circle cx="12" cy="11" r="2.2"/></svg>
-        <div><div class="h">Naše radnje</div><div class="s">prodavnice u više gradova</div></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Categories -->
-<section class="block" id="kolekcije">
-  <div class="wrap">
-    <div class="sec-head reveal">
+  <section class="hero">
+    <div class="wrap hero-grid">
       <div>
-        <span class="eyebrow">Kolekcije</span>
-        <h2>Za svaki trenutak<br>svoj komad</h2>
+        <span class="eyebrow">Proba 585 · 375 · 925 · 986</span>
+        <h1>Zlato koje se <em>predaje dalje</em>, ne samo nosi.</h1>
+        <p class="lede">Vereničko prstenje, burme i nakit ručne izrade iz Zlatare Unca — svaki komad probijen, žigosan i spreman da postane porodično nasleđe.</p>
+        <div class="hero-ctas">
+          <a class="btn primary" href="shop.html">Pogledaj kolekciju</a>
+          <a class="btn" href="shop.html?cat=verenicko">Vereničko prstenje</a>
+        </div>
       </div>
-      <a href="#" class="link">Sve kategorije</a>
+      <div class="hero-stamp-field" aria-hidden="true">
+        <span class="punca">
+          <span class="stamp-word">Unca</span>
+          <span class="k">585 · AU</span>
+        </span>
+      </div>
     </div>
-    <div class="cat-grid reveal">
-      <a class="cat big">
-        <img src="https://images.unsplash.com/photo-1602751584552-8ba73aad10e1?auto=format&fit=crop&w=900&q=80" alt="Verenično prstenje">
-        <div class="label"><span class="k">Za veliko pitanje</span><span class="n">Verenično prstenje</span></div>
-      </a>
-      <a class="cat reg">
-        <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&w=600&q=80" alt="Burme">
-        <div class="label"><span class="k">Za dvoje</span><span class="n">Burme</span></div>
-      </a>
-      <a class="cat reg">
-        <img src="https://images.unsplash.com/photo-1611652022419-a9419f74343d?auto=format&fit=crop&w=600&q=80" alt="Ogrlice">
-        <div class="label"><span class="k">Oko vrata</span><span class="n">Ogrlice</span></div>
-      </a>
-      <a class="cat reg">
-        <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=600&q=80" alt="Minđuše">
-        <div class="label"><span class="k">Detalj koji sija</span><span class="n">Minđuše</span></div>
-      </a>
-      <a class="cat reg">
-        <img src="https://images.unsplash.com/photo-1611085583191-a3b181a88401?auto=format&fit=crop&w=600&q=80" alt="Narukvice">
-        <div class="label"><span class="k">Na zglobu</span><span class="n">Narukvice</span></div>
-      </a>
-      <a class="cat wide">
-        <img src="https://images.unsplash.com/photo-1610375461369-d613b564f4c4?auto=format&fit=crop&w=900&q=80" alt="Zlatnici">
-        <div class="label"><span class="k">Investicija u zlato</span><span class="n">Zlatnici</span></div>
-      </a>
+  </section>
+
+  <div class="trust-bar">
+    <div class="wrap">
+      <span>Besplatna dostava preko 10.000 RSD</span>
+      <span>Bezbedna online kupovina</span>
+      <span>Redovna online podrška</span>
+      <span>Maloprodajne lokacije na više mesta</span>
     </div>
   </div>
-</section>
 
-<!-- Featured products -->
-<section class="block" id="izdvojeno" style="padding-top:0">
+  <section class="block">
+    <div class="wrap">
+      <div class="block-head">
+        <div>
+          <span class="eyebrow">Kolekcije</span>
+          <h2>Počni od onoga što tražiš</h2>
+        </div>
+        <a class="see-all" href="shop.html">Ceo katalog →</a>
+      </div>
+      <div class="category-grid">
+        <a class="category-tile" href="shop.html?cat=verenicko">
+          <span class="punca"><span>585</span></span>
+          <div><h3>Vereničko prstenje</h3><p>Parovi za veliki dan</p></div>
+        </a>
+        <a class="category-tile" href="shop.html?cat=burme">
+          <span class="punca"><span>585</span></span>
+          <div><h3>Burme</h3><p>Svaki profil, svaka širina</p></div>
+        </a>
+        <a class="category-tile" href="shop.html?cat=zlatnici">
+          <span class="punca"><span>986</span></span>
+          <div><h3>Zlatnici</h3><p>Investicija u zlatu</p></div>
+        </a>
+        <a class="category-tile" href="shop.html?cat=brendovi">
+          <span class="punca"><span>925</span></span>
+          <div><h3>Brendovi</h3><p>Disney, Aquaforte, Camurria</p></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="block alt">
+    <div class="wrap">
+      <div class="block-head">
+        <div>
+          <span class="eyebrow">Najpopularnije</span>
+          <h2>Najtraženiji komadi ovog meseca</h2>
+        </div>
+        <a class="see-all" href="shop.html">Vidi sve →</a>
+      </div>
+      <div class="product-grid" id="bestsellers"></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <div class="block-head">
+        <div>
+          <span class="eyebrow">Licencirane kolekcije</span>
+          <h2>Brendovi u ponudi</h2>
+        </div>
+      </div>
+      <div class="brand-strip">
+        <a href="shop.html?cat=brendovi">Disney</a>
+        <a href="shop.html?cat=brendovi">Aquaforte Vicenza</a>
+        <a href="shop.html?cat=brendovi">Camurria</a>
+        <a href="shop.html?cat=brendovi">Maman et Sophie</a>
+        <a href="shop.html?cat=brendovi">Roberto Giannotti</a>
+        <a href="shop.html?cat=brendovi">Crystal Wings</a>
+        <a href="shop.html?cat=brendovi">Scintille</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="wrap">
+      <span class="eyebrow">Newsletter</span>
+      <h2>Budi u toku sa novim kolekcijama i popustima</h2>
+      <form onsubmit="event.preventDefault(); this.reset(); alert('Hvala na prijavi.');">
+        <input type="email" placeholder="Tvoja email adresa" required aria-label="Email adresa">
+        <button class="btn primary" type="submit">Prijavi se</button>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
   <div class="wrap">
-    <div class="sec-head reveal">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="brand"><span class="punca" style="--size:34px;font-size:9px;"><span>U</span></span> Zlatara Unca</span>
+        <p>Ručna izrada zlatnog i srebrnog nakita, vereničkog prstenja i burmi. Poverenje generacija kupaca.</p>
+      </div>
       <div>
-        <span class="eyebrow">Najpopularnije</span>
-        <h2>Izdvojeno iz radnje</h2>
+        <h4>Kupovina</h4>
+        <ul>
+          <li><a href="shop.html">Ceo katalog</a></li>
+          <li><a href="shop.html?cat=verenicko">Vereničko prstenje</a></li>
+          <li><a href="shop.html?cat=burme">Burme</a></li>
+          <li><a href="shop.html?cat=zlatnici">Zlatnici</a></li>
+        </ul>
       </div>
-      <a href="#" class="link">Cela ponuda</a>
-    </div>
-    <div class="prod-grid">
-      <!-- card 1 -->
-      <article class="card reveal">
-        <div class="card-media">
-          <span class="card-tag">Disney</span>
-          <button class="card-fav" aria-label="Dodaj u želje"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.6-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.4-7 10-7 10z"/></svg></button>
-          <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=600&q=80" alt="Disney minđuše">
-          <button class="card-add">Dodaj u korpu</button>
-        </div>
-        <div class="card-cat">Disney™</div>
-        <h3><a href="#">Belo srebro — minđuše sa centralnim cirkonom</a></h3>
-        <div class="price"><span class="range">6.600 – 15.000 RSD</span></div>
-      </article>
-      <!-- card 2 -->
-      <article class="card reveal">
-        <div class="card-media">
-          <span class="card-tag">Disney</span>
-          <button class="card-fav" aria-label="Dodaj u želje"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.6-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.4-7 10-7 10z"/></svg></button>
-          <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=600&q=80" alt="Miki i Mini ogrlica">
-          <button class="card-add">Dodaj u korpu</button>
-        </div>
-        <div class="card-cat">Disney™</div>
-        <h3><a href="#">Miki i Mini — ogrlica sa detaljima iz bajke</a></h3>
-        <div class="price">6.500 RSD</div>
-      </article>
-      <!-- card 3 -->
-      <article class="card reveal">
-        <div class="card-media">
-          <span class="card-tag" style="color:var(--pine)">Zlato 9K</span>
-          <button class="card-fav" aria-label="Dodaj u želje"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.6-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.4-7 10-7 10z"/></svg></button>
-          <img src="https://images.unsplash.com/photo-1596944924616-7b38e7cfac36?auto=format&fit=crop&w=600&q=80" alt="Zlatne minđuše sa rubinom">
-          <button class="card-add">Dodaj u korpu</button>
-        </div>
-        <div class="card-cat">Disney™ · 9K zlato</div>
-        <h3><a href="#">Lepotica i zver — zlatne minđuše sa rubinom</a></h3>
-        <div class="price">19.800 RSD</div>
-      </article>
-      <!-- card 4 -->
-      <article class="card reveal">
-        <div class="card-media">
-          <span class="card-tag">Aquaforte</span>
-          <button class="card-fav" aria-label="Dodaj u želje"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.6-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.4-7 10-7 10z"/></svg></button>
-          <img src="https://images.unsplash.com/photo-1611085583191-a3b181a88401?auto=format&fit=crop&w=600&q=80" alt="Aquaforte narukvica">
-          <button class="card-add">Dodaj u korpu</button>
-        </div>
-        <div class="card-cat">Aquaforte Vicenza</div>
-        <h3><a href="#">Srebrna narukvica sa 23-karatnom pozlatom</a></h3>
-        <div class="price"><span class="old">13.400</span>11.600 RSD</div>
-      </article>
-      <!-- card 5 -->
-      <article class="card reveal">
-        <div class="card-media">
-          <span class="card-tag">Aquaforte</span>
-          <button class="card-fav" aria-label="Dodaj u želje"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.6-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.4-7 10-7 10z"/></svg></button>
-          <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=600&q=80" alt="Aquaforte prsten">
-          <button class="card-add">Dodaj u korpu</button>
-        </div>
-        <div class="card-cat">Aquaforte Vicenza</div>
-        <h3><a href="#">Srebrni prsten sa 23-karatnom pozlatom</a></h3>
-        <div class="price">11.000 RSD</div>
-      </article>
-      <!-- card 6 -->
-      <article class="card reveal">
-        <div class="card-media">
-          <span class="card-tag" style="color:var(--pine)">Burma</span>
-          <button class="card-fav" aria-label="Dodaj u želje"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.6-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.4-7 10-7 10z"/></svg></button>
-          <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&w=600&q=80" alt="Zlatna burma">
-          <button class="card-add">Dodaj u korpu</button>
-        </div>
-        <div class="card-cat">Burme · Zlato 14K</div>
-        <h3><a href="#">Klasična zlatna burma — mat i sjaj</a></h3>
-        <div class="price">24.900 RSD</div>
-      </article>
-      <!-- card 7 -->
-      <article class="card reveal">
-        <div class="card-media">
-          <span class="card-tag">Camurria</span>
-          <button class="card-fav" aria-label="Dodaj u želje"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.6-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.4-7 10-7 10z"/></svg></button>
-          <img src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=600&q=80" alt="Camurria ručni sat">
-          <button class="card-add">Dodaj u korpu</button>
-        </div>
-        <div class="card-cat">Camurria</div>
-        <h3><a href="#">Ručni sat sa kožnom narukvicom</a></h3>
-        <div class="price">11.900 RSD</div>
-      </article>
-      <!-- card 8 -->
-      <article class="card reveal">
-        <div class="card-media">
-          <span class="card-tag" style="color:var(--pine)">Zlato 14K</span>
-          <button class="card-fav" aria-label="Dodaj u želje"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.6-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.4-7 10-7 10z"/></svg></button>
-          <img src="https://images.unsplash.com/photo-1602751584552-8ba73aad10e1?auto=format&fit=crop&w=600&q=80" alt="Prsten od zlata sa cirkonom">
-          <button class="card-add">Dodaj u korpu</button>
-        </div>
-        <div class="card-cat">Verenično prstenje</div>
-        <h3><a href="#">Prsten od zlata sa centralnim cirkonom</a></h3>
-        <div class="price">32.500 RSD</div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- Brands -->
-<section class="block brands" id="brendovi">
-  <div class="wrap">
-    <div class="sec-head reveal">
       <div>
-        <span class="eyebrow">Zvanični zastupnik</span>
-        <h2>Brendovi kojima<br>verujemo</h2>
+        <h4>Informacije</h4>
+        <ul>
+          <li><a href="o-nama.html">O nama</a></li>
+          <li><a href="kontakt.html">Kontakt</a></li>
+          <li><a href="cart.html">Korpa</a></li>
+        </ul>
       </div>
-      <a href="#" class="link" style="color:var(--pearl)">Svi brendovi</a>
-    </div>
-    <div class="brand-row reveal">
-      <a class="brand-cell"><span class="bn">Disney</span><span class="bd">Licencirane kolekcije nakita</span><span class="arrow">→</span></a>
-      <a class="brand-cell"><span class="bn">Aquaforte Vicenza</span><span class="bd">Srebro sa 23K pozlatom, Italija</span><span class="arrow">→</span></a>
-      <a class="brand-cell"><span class="bn">Camurria</span><span class="bd">Satovi i modni nakit</span><span class="arrow">→</span></a>
-      <a class="brand-cell"><span class="bn">Maman et Sophie</span><span class="bd">Nežni komadi za svaki dan</span><span class="arrow">→</span></a>
-      <a class="brand-cell"><span class="bn">Roberto Giannotti</span><span class="bd">Anđeli i amajlije od srebra</span><span class="arrow">→</span></a>
-      <a class="brand-cell"><span class="bn">Scintille</span><span class="bd">Sjaj kristala i cirkona</span><span class="arrow">→</span></a>
-    </div>
-  </div>
-</section>
-
-<!-- Feature: engagement -->
-<section class="feature" id="verenicko">
-  <div class="feature-grid">
-    <div class="feature-media">
-      <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=1000&q=80" alt="Verenično prstenje sa dijamantom">
-    </div>
-    <div class="feature-copy reveal">
-      <span class="eyebrow">Verenično prstenje</span>
-      <h2>Za trenutak koji se<br><em>pamti ceo život</em></h2>
-      <p>Biramo dijamante i cirkone po sjaju i čistoći, a svaki prsten dolazi sa sertifikatom i mogućnošću graviranja. Pomažemo vam da izaberete pravu veličinu i oblik — bez pritiska.</p>
-      <div class="feature-hallmarks">
-        <span class="hallmark">Sertifikat porekla</span>
-        <span class="hallmark">Besplatno graviranje</span>
-        <span class="hallmark">Prilagođavanje veličine</span>
-      </div>
-      <a href="#" class="btn btn-gold">Pogledaj prstenje</a>
-    </div>
-  </div>
-</section>
-
-<!-- Craft / assurance -->
-<section class="block craft">
-  <div class="wrap">
-    <div class="sec-head reveal" style="margin-bottom:40px">
       <div>
-        <span class="eyebrow">Zašto Unca</span>
-        <h2>Poverenje mereno<br>u gramima</h2>
+        <h4>Pratite nas</h4>
+        <ul>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Facebook</a></li>
+        </ul>
       </div>
     </div>
-    <div class="craft-grid reveal">
-      <div class="craft-item">
-        <span class="num">01 — Poreklo</span>
-        <h3>Žig i sertifikat</h3>
-        <p>Svaki komad od plemenitog metala nosi žig čistoće i prati ga sertifikat, tako da tačno znate šta držite u ruci.</p>
-        <div class="ruler-holder"></div>
-      </div>
-      <div class="craft-item">
-        <span class="num">02 — Izrada</span>
-        <h3>Ručni rad i popravke</h3>
-        <p>Prilagođavamo veličinu, gravitramo posvete i popravljamo nakit u sopstvenoj radionici — i kada nije kupljen kod nas.</p>
-        <div class="ruler-holder"></div>
-      </div>
-      <div class="craft-item">
-        <span class="num">03 — Poverenje</span>
-        <h3>Otkup i zamena</h3>
-        <p>Fer procena zlata pri otkupu i zameni, po dnevnom kursu i bez skrivenih troškova. Vaše zlato zadržava svoju vrednost.</p>
-        <div class="ruler-holder"></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Newsletter -->
-<section class="news" id="kontakt">
-  <div class="wrap">
-    <span class="eyebrow">Ostanite u toku</span>
-    <h2>Prvi saznajte za nove kolekcije<br>i sezonske popuste</h2>
-    <p>Prijavite se na newsletter — bez spama, samo lepe stvari i povremene pogodnosti.</p>
-    <div class="news-form">
-      <input type="email" id="newsEmail" placeholder="Vaša e-mail adresa" aria-label="E-mail adresa">
-      <button id="newsBtn">Prijavi se</button>
-    </div>
-    <div class="news-note">Prijavom prihvatate da vas kontaktiramo povodom ponuda. Odjava je moguća u svakom trenutku.</div>
-  </div>
-</section>
-
-<!-- Footer -->
-<footer>
-  <div class="wrap">
-    <div class="foot-grid">
-      <div class="foot-brand">
-        <div class="mark">UNCA</div>
-        <div class="sub">Zlatara</div>
-        <p>Fini nakit, verenično prstenje i burme sa žigom čistoće. Zlato i srebro kojima se veruje.</p>
-        <div class="foot-socials">
-          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
-          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 8h2V5h-2c-2 0-3 1-3 3v2H9v3h2v6h3v-6h2l1-3h-3V8z"/></svg></a>
-        </div>
-      </div>
-      <div class="foot-col">
-        <h4>Prodavnica</h4>
-        <a href="#">Verenično prstenje</a>
-        <a href="#">Burme</a>
-        <a href="#">Ogrlice i lančići</a>
-        <a href="#">Minđuše</a>
-        <a href="#">Zlatnici</a>
-      </div>
-      <div class="foot-col">
-        <h4>Brendovi</h4>
-        <a href="#">Disney</a>
-        <a href="#">Aquaforte Vicenza</a>
-        <a href="#">Camurria</a>
-        <a href="#">Roberto Giannotti</a>
-        <a href="#">Svi brendovi</a>
-      </div>
-      <div class="foot-col">
-        <h4>Pomoć</h4>
-        <a href="#">O nama</a>
-        <a href="#">Kontakt</a>
-        <a href="#">Dostava i plaćanje</a>
-        <a href="#">Povrat i reklamacije</a>
-        <a href="#">Moj nalog</a>
-      </div>
-    </div>
-    <div class="foot-bottom">
+    <div class="footer-bottom">
       <span>© 2026 Zlatara Unca. Sva prava zadržana.</span>
-      <span>Zlato · Srebro · Dijamanti · Poludrago kamenje</span>
+      <span>Redizajn koncept — demo verzija</span>
     </div>
   </div>
 </footer>
 
-<!-- Toast -->
-<div class="toast" id="toast"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 6L9 17l-5-5"/></svg><span id="toastMsg">Dodato u korpu</span></div>
-
+<script src="js/data.js"></script>
+<script src="js/icons.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/main.js"></script>
 <script>
-// build ruler ticks
-document.querySelectorAll('.ruler-holder').forEach(h=>{
-  const r=document.createElement('div');r.className='ruler';
-  const t=document.createElement('div');t.className='ruler-ticks';
-  for(let i=0;i<41;i++){t.appendChild(document.createElement('span'));}
-  r.appendChild(t);h.appendChild(r);
-});
-
-// header shrink
-const header=document.getElementById('header');
-addEventListener('scroll',()=>{header.classList.toggle('shrink',scrollY>40)});
-
-// mobile menu
-const mm=document.getElementById('mobileMenu');
-document.getElementById('burger').onclick=()=>mm.classList.add('open');
-document.getElementById('mmClose').onclick=()=>mm.classList.remove('open');
-mm.querySelectorAll('a').forEach(a=>a.onclick=()=>mm.classList.remove('open'));
-
-// reveal
-const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-
-// toast helper
-let tTimer;const toast=document.getElementById('toast'),toastMsg=document.getElementById('toastMsg');
-function showToast(m){toastMsg.textContent=m;toast.classList.add('show');clearTimeout(tTimer);tTimer=setTimeout(()=>toast.classList.remove('show'),2200)}
-
-// cart
-let count=0;const cc=document.getElementById('cartCount');
-document.querySelectorAll('.card-add').forEach(b=>b.onclick=()=>{count++;cc.textContent=count;showToast('Dodato u korpu')});
-
-// wishlist
-document.querySelectorAll('.card-fav').forEach(b=>b.onclick=()=>{b.classList.toggle('on');showToast(b.classList.contains('on')?'Dodato u želje':'Uklonjeno iz želja')});
-
-// newsletter
-document.getElementById('newsBtn').onclick=()=>{
-  const v=document.getElementById('newsEmail').value.trim();
-  if(!v||!v.includes('@')){showToast('Unesite ispravnu e-mail adresu');return}
-  document.getElementById('newsEmail').value='';showToast('Hvala! Prijava je uspešna.');
-};
-
-// image fallback -> subtle gemstone gradient so nothing renders broken
-document.querySelectorAll('img').forEach(img=>{
-  img.addEventListener('error',()=>{
-    const p=img.parentElement;
-    img.style.display='none';
-    if(!p.dataset.fb){p.dataset.fb='1';p.style.background='radial-gradient(120% 120% at 30% 20%, #1b4638 0%, #123128 55%, #0C231C 100%)';}
-  });
-});
+  renderProductGrid(document.getElementById("bestsellers"), PRODUCTS.slice(0, 4));
 </script>
 </body>
 </html>

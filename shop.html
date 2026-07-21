@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shop — Zlatara Unca</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Public+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Pređi na sadržaj</a>
+
+<header class="site-header">
+  <div class="bar">
+    <a class="brand" href="index.html">
+      <span class="punca"><span>U<span class="k">·N·C·A</span></span></span>
+      <span>Zlatara Unca<small>Zlato · Srebro · Od 1998</small></span>
+    </a>
+    <nav class="primary" aria-label="Glavna navigacija">
+      <a href="index.html">Početna</a>
+      <a href="shop.html" aria-current="page">Shop</a>
+      <a href="o-nama.html">O nama</a>
+      <a href="kontakt.html">Kontakt</a>
+    </nav>
+    <div class="header-actions">
+      <a class="cart-pill" href="cart.html">
+        <span>Korpa</span>
+        <span class="count" data-cart-count>0</span>
+      </a>
+      <button class="nav-toggle" aria-label="Otvori meni">☰</button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-drawer">
+  <div class="drawer-top">
+    <span class="brand"><span class="punca"><span>U</span></span></span>
+    <button class="close-btn" aria-label="Zatvori meni">✕</button>
+  </div>
+  <nav>
+    <a href="index.html">Početna</a>
+    <a href="shop.html">Shop</a>
+    <a href="o-nama.html">O nama</a>
+    <a href="kontakt.html">Kontakt</a>
+    <a href="cart.html">Korpa (<span data-cart-count>0</span>)</a>
+  </nav>
+</div>
+
+<main id="main">
+  <div class="page-header">
+    <div class="wrap">
+      <div class="breadcrumb"><a href="index.html">Početna</a> / Shop</div>
+      <h1>Ceo katalog</h1>
+    </div>
+  </div>
+
+  <section class="block">
+    <div class="wrap">
+      <div class="filter-row" id="filters">
+        <button class="filter-chip active" data-filter="sve">Sve</button>
+        <button class="filter-chip" data-filter="verenicko">Vereničko prstenje</button>
+        <button class="filter-chip" data-filter="burme">Burme</button>
+        <button class="filter-chip" data-filter="zlatno">Zlatno prstenje</button>
+        <button class="filter-chip" data-filter="srebrno">Srebrno prstenje</button>
+        <button class="filter-chip" data-filter="zlatnici">Zlatnici</button>
+        <button class="filter-chip" data-filter="ogrlice">Ogrlice</button>
+        <button class="filter-chip" data-filter="narukvice">Narukvice</button>
+        <button class="filter-chip" data-filter="mindjuse">Minđuše</button>
+        <button class="filter-chip" data-filter="brendovi">Brendovi</button>
+      </div>
+      <div class="product-grid" id="catalog"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="brand"><span class="punca" style="--size:34px;font-size:9px;"><span>U</span></span> Zlatara Unca</span>
+        <p>Ručna izrada zlatnog i srebrnog nakita, vereničkog prstenja i burmi.</p>
+      </div>
+      <div>
+        <h4>Kupovina</h4>
+        <ul>
+          <li><a href="shop.html">Ceo katalog</a></li>
+          <li><a href="shop.html?cat=verenicko">Vereničko prstenje</a></li>
+          <li><a href="shop.html?cat=burme">Burme</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Informacije</h4>
+        <ul>
+          <li><a href="o-nama.html">O nama</a></li>
+          <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Pratite nas</h4>
+        <ul>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Zlatara Unca. Sva prava zadržana.</span>
+      <span>Redizajn koncept — demo verzija</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/icons.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/main.js"></script>
+<script>
+  const grid = document.getElementById("catalog");
+
+  function applyFilter(key) {
+    const list = key === "sve" ? PRODUCTS : PRODUCTS.filter((p) => p.catKey === key);
+    renderProductGrid(grid, list);
+  }
+
+  const params = new URLSearchParams(window.location.search);
+  const initial = params.get("cat") || "sve";
+  const initialChip = document.querySelector(`[data-filter="${initial}"]`) || document.querySelector('[data-filter="sve"]');
+  document.querySelectorAll(".filter-chip").forEach((c) => c.classList.remove("active"));
+  initialChip.classList.add("active");
+  applyFilter(initial);
+
+  initFilterChips(".filter-chip", applyFilter);
+</script>
+</body>
+</html>

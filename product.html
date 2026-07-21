@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Proizvod — Zlatara Unca</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Public+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Pređi na sadržaj</a>
+
+<header class="site-header">
+  <div class="bar">
+    <a class="brand" href="index.html">
+      <span class="punca"><span>U<span class="k">·N·C·A</span></span></span>
+      <span>Zlatara Unca<small>Zlato · Srebro · Od 1998</small></span>
+    </a>
+    <nav class="primary" aria-label="Glavna navigacija">
+      <a href="index.html">Početna</a>
+      <a href="shop.html">Shop</a>
+      <a href="o-nama.html">O nama</a>
+      <a href="kontakt.html">Kontakt</a>
+    </nav>
+    <div class="header-actions">
+      <a class="cart-pill" href="cart.html">
+        <span>Korpa</span>
+        <span class="count" data-cart-count>0</span>
+      </a>
+      <button class="nav-toggle" aria-label="Otvori meni">☰</button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-drawer">
+  <div class="drawer-top">
+    <span class="brand"><span class="punca"><span>U</span></span></span>
+    <button class="close-btn" aria-label="Zatvori meni">✕</button>
+  </div>
+  <nav>
+    <a href="index.html">Početna</a>
+    <a href="shop.html">Shop</a>
+    <a href="o-nama.html">O nama</a>
+    <a href="kontakt.html">Kontakt</a>
+    <a href="cart.html">Korpa (<span data-cart-count>0</span>)</a>
+  </nav>
+</div>
+
+<main id="main">
+  <div class="page-header">
+    <div class="wrap">
+      <div class="breadcrumb"><a href="index.html">Početna</a> / <a href="shop.html">Shop</a> / <span id="crumb-name"></span></div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="pdp-grid" id="pdp-root"></div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-bottom">
+      <span>© 2026 Zlatara Unca. Sva prava zadržana.</span>
+      <span>Redizajn koncept — demo verzija</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/icons.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/main.js"></script>
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const product = getProductById(params.get("id"));
+  const root = document.getElementById("pdp-root");
+
+  if (!product) {
+    root.innerHTML = `<div class="empty-cart" style="grid-column:1/-1;">
+      <span class="punca"><span>?</span></span>
+      <h2>Proizvod nije pronađen</h2>
+      <p>Izgleda da je link neispravan.</p>
+      <a class="btn primary" href="shop.html">Nazad na shop</a>
+    </div>`;
+  } else {
+    document.title = product.name + " — Zlatara Unca";
+    document.getElementById("crumb-name").textContent = product.name;
+
+    root.innerHTML = `
+      <div class="pdp-media">
+        ${product.tag ? `<span class="product-tag">${product.tag}</span>` : ""}
+        ${iconFor(product.icon)}
+      </div>
+      <div class="pdp-info">
+        <span class="eyebrow">${product.cat}</span>
+        <h1>${product.name}</h1>
+        <div class="pdp-price">${formatRSD(product.price)}</div>
+        <p class="pdp-desc">${product.desc}</p>
+        <div class="pdp-meta">
+          <div><div class="label">Proba</div><div class="value">${product.purity}</div></div>
+          <div><div class="label">Materijal</div><div class="value">${product.material}</div></div>
+        </div>
+        <div class="qty-row">
+          <div class="qty-control">
+            <button type="button" id="qty-minus" aria-label="Smanji količinu">−</button>
+            <input type="text" id="qty-input" value="1" readonly aria-label="Količina">
+            <button type="button" id="qty-plus" aria-label="Povećaj količinu">+</button>
+          </div>
+          <button class="btn primary" id="add-btn">Dodaj u korpu</button>
+        </div>
+        <p class="pdp-added" id="added-msg">Dodato u korpu.</p>
+      </div>
+    `;
+
+    let qty = 1;
+    const qtyInput = document.getElementById("qty-input");
+    document.getElementById("qty-minus").addEventListener("click", () => {
+      qty = Math.max(1, qty - 1);
+      qtyInput.value = qty;
+    });
+    document.getElementById("qty-plus").addEventListener("click", () => {
+      qty += 1;
+      qtyInput.value = qty;
+    });
+    document.getElementById("add-btn").addEventListener("click", () => {
+      addToCart(product.id, qty);
+      const msg = document.getElementById("added-msg");
+      msg.classList.add("show");
+      setTimeout(() => msg.classList.remove("show"), 2200);
+    });
+  }
+</script>
+</body>
+</html>
