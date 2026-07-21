@@ -1,182 +1,157 @@
-/* Zlatara Unca — demo katalog za pitch prezentaciju.
-   Nazivi i cene su ilustrativni, u stilu i cenovnom rasponu realne ponude,
-   radi prikaza dizajna i funkcionalnosti korpe. */
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Korpa — Zlatara Unca</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Public+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Pređi na sadržaj</a>
 
-const PRODUCTS = [
-  {
-    id: "vp-01",
-    name: "Vereničko prstenje — par, zlato 585",
-    cat: "Vereničko prstenje",
-    catKey: "verenicko",
-    price: 68000,
-    purity: "585",
-    material: "Žuto zlato",
-    desc: "Klasičan par verenica u sjajnom 14-karatnom zlatu, glatka linija bez kamena — miruje uz svaki stil venčanja.",
-    icon: "rings",
-    tag: "Bestseler"
-  },
-  {
-    id: "vp-02",
-    name: "Prsten od zlata sa cirkonom",
-    cat: "Vereničko prstenje",
-    catKey: "verenicko",
-    price: 42000,
-    purity: "375",
-    material: "Žuto zlato",
-    desc: "Tanak obruč od 9-karatnog zlata sa jednim centralnim cirkonom — diskretan i svakodnevan.",
-    icon: "ring-stone"
-  },
-  {
-    id: "zp-01",
-    name: "Zlatni prsten, uže pletivo",
-    cat: "Zlatno prstenje",
-    catKey: "zlatno",
-    price: 35500,
-    purity: "585",
-    material: "Žuto zlato",
-    desc: "Upleteni obruč inspirisan starim zanatskim tehnikama zlatarstva, ručno dovršen.",
-    icon: "ring-twist"
-  },
-  {
-    id: "zp-02",
-    name: "Zlatni pečatni prsten",
-    cat: "Zlatno prstenje",
-    catKey: "zlatno",
-    price: 39000,
-    purity: "585",
-    material: "Žuto zlato",
-    desc: "Masivniji pečatnjak sa ravnom pločicom za graviranje inicijala.",
-    icon: "ring-signet"
-  },
-  {
-    id: "sp-01",
-    name: "Srebrni prsten sa pozlatom 23K",
-    cat: "Srebrno prstenje",
-    catKey: "srebrno",
-    price: 11000,
-    purity: "925",
-    material: "Srebro",
-    desc: "Srebrna baza sa tankim slojem 23-karatne pozlate — lagan, pristupačan dnevni komad.",
-    icon: "ring-stone"
-  },
-  {
-    id: "bu-01",
-    name: "Burma, klasičan profil 4mm",
-    cat: "Burme",
-    catKey: "burme",
-    price: 58000,
-    purity: "585",
-    material: "Žuto zlato",
-    desc: "Udoban poluokrugao profil, najtraženija širina za svakodnevno nošenje.",
-    icon: "band"
-  },
-  {
-    id: "bu-02",
-    name: "Burma, ravni profil sa satenskom obradom",
-    cat: "Burme",
-    catKey: "burme",
-    price: 61500,
-    purity: "585",
-    material: "Belo zlato",
-    desc: "Moderna ravna linija u belom zlatu sa mat saten završnicom.",
-    icon: "band"
-  },
-  {
-    id: "zl-01",
-    name: "Zlatnik, dukat 986",
-    cat: "Zlatnici",
-    catKey: "zlatnici",
-    price: 145000,
-    purity: "986",
-    material: "Investiciono zlato",
-    desc: "Investicioni zlatnik visoke čistoće, sa sertifikatom porekla i probe.",
-    icon: "coin"
-  },
-  {
-    id: "og-01",
-    name: "Ogrlica, tanki lančić forcatura",
-    cat: "Ogrlice",
-    catKey: "ogrlice",
-    price: 27500,
-    purity: "585",
-    material: "Žuto zlato",
-    desc: "Fin lančić za svakodnevno slojevito nošenje ili samostalno kao osnovni komad.",
-    icon: "necklace"
-  },
-  {
-    id: "og-02",
-    name: "Ogrlica sa priveskom, poludrago kamenje",
-    cat: "Ogrlice",
-    catKey: "ogrlice",
-    price: 33000,
-    purity: "375",
-    material: "Žuto zlato",
-    desc: "Privesak sa poludragim kamenom na lančiću srednje dužine.",
-    icon: "necklace-pendant"
-  },
-  {
-    id: "na-01",
-    name: "Narukvica, karike figaro",
-    cat: "Narukvice",
-    catKey: "narukvice",
-    price: 31000,
-    purity: "585",
-    material: "Žuto zlato",
-    desc: "Klasičan figaro splet, podesiva dužina uz sigurnosnu kopču.",
-    icon: "bracelet"
-  },
-  {
-    id: "mi-01",
-    name: "Minđuše, mala petlja sa cirkonom",
-    cat: "Minđuše",
-    catKey: "mindjuse",
-    price: 18500,
-    purity: "375",
-    material: "Žuto zlato",
-    desc: "Diskretna svakodnevna petlja sa jednim cirkonom — lagane za ceo dan.",
-    icon: "earrings"
-  },
-  {
-    id: "br-01",
-    name: "Disney™ minđuše, srebro sa emajlom",
-    cat: "Brendovi · Disney",
-    catKey: "brendovi",
-    price: 8600,
-    purity: "925",
-    material: "Srebro",
-    desc: "Licencirana Disney kolekcija u srebru — šareni emajl detalji, poklon kutija uključena.",
-    icon: "earrings",
-    tag: "Novo"
-  },
-  {
-    id: "br-02",
-    name: "Aquaforte narukvica, srebro sa pozlatom 23K",
-    cat: "Brendovi · Aquaforte Vicenza",
-    catKey: "brendovi",
-    price: 11600,
-    purity: "925",
-    material: "Srebro",
-    desc: "Italijanski dizajn iz Vičence — srebro sa slojem 23-karatne pozlate.",
-    icon: "bracelet"
+<header class="site-header">
+  <div class="bar">
+    <a class="brand" href="index.html">
+      <span class="punca"><span>U<span class="k">·N·C·A</span></span></span>
+      <span>Zlatara Unca<small>Zlato · Srebro · Od 1998</small></span>
+    </a>
+    <nav class="primary" aria-label="Glavna navigacija">
+      <a href="index.html">Početna</a>
+      <a href="shop.html">Shop</a>
+      <a href="o-nama.html">O nama</a>
+      <a href="kontakt.html">Kontakt</a>
+    </nav>
+    <div class="header-actions">
+      <a class="cart-pill" href="cart.html" aria-current="page">
+        <span>Korpa</span>
+        <span class="count" data-cart-count>0</span>
+      </a>
+      <button class="nav-toggle" aria-label="Otvori meni">☰</button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-drawer">
+  <div class="drawer-top">
+    <span class="brand"><span class="punca"><span>U</span></span></span>
+    <button class="close-btn" aria-label="Zatvori meni">✕</button>
+  </div>
+  <nav>
+    <a href="index.html">Početna</a>
+    <a href="shop.html">Shop</a>
+    <a href="o-nama.html">O nama</a>
+    <a href="kontakt.html">Kontakt</a>
+    <a href="cart.html">Korpa (<span data-cart-count>0</span>)</a>
+  </nav>
+</div>
+
+<main id="main">
+  <div class="page-header">
+    <div class="wrap">
+      <div class="breadcrumb"><a href="index.html">Početna</a> / Korpa</div>
+      <h1>Vaša korpa</h1>
+    </div>
+  </div>
+
+  <div class="wrap" id="cart-root"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-bottom">
+      <span>© 2026 Zlatara Unca. Sva prava zadržana.</span>
+      <span>Redizajn koncept — demo verzija</span>
+    </div>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="icons.js"></script>
+<script src="cart.js"></script>
+<script src="main.js"></script>
+<script>
+  const root = document.getElementById("cart-root");
+
+  function renderCart() {
+    const lines = readCart();
+
+    if (lines.length === 0) {
+      root.innerHTML = `
+        <div class="empty-cart">
+          <span class="punca"><span>0</span></span>
+          <h2>Korpa je prazna</h2>
+          <p>Dodajte komad iz kataloga da nastavite.</p>
+          <a class="btn primary" href="shop.html">Pogledaj shop</a>
+        </div>`;
+      return;
+    }
+
+    const rows = lines.map((line) => {
+      const p = getProductById(line.id);
+      if (!p) return "";
+      return `
+        <div class="cart-line" data-line="${p.id}">
+          <div class="thumb">${iconFor(p.icon)}</div>
+          <div>
+            <div class="cat">${p.cat}</div>
+            <div class="name">${p.name}</div>
+            <div class="qty-control" style="margin-top:8px;">
+              <button type="button" data-dec="${p.id}" aria-label="Smanji količinu">−</button>
+              <input type="text" value="${line.qty}" readonly aria-label="Količina">
+              <button type="button" data-inc="${p.id}" aria-label="Povećaj količinu">+</button>
+            </div>
+          </div>
+          <div class="price">${formatRSD(p.price * line.qty)}</div>
+          <button class="remove" data-remove="${p.id}">Ukloni</button>
+        </div>`;
+    }).join("");
+
+    const subtotal = cartTotal();
+    const shipping = subtotal >= 10000 ? 0 : 350;
+    const total = subtotal + shipping;
+
+    root.innerHTML = `
+      <div class="cart-layout">
+        <div class="cart-lines">${rows}</div>
+        <div class="cart-summary">
+          <h3>Pregled porudžbine</h3>
+          <div class="summary-row"><span>Međuzbir</span><span>${formatRSD(subtotal)}</span></div>
+          <div class="summary-row"><span>Dostava</span><span>${shipping === 0 ? "Besplatno" : formatRSD(shipping)}</span></div>
+          <div class="summary-row total"><span>Ukupno</span><span class="val">${formatRSD(total)}</span></div>
+          <button class="btn primary block" id="checkout-btn">Nastavi na plaćanje</button>
+          <p style="font-family:var(--mono);font-size:0.7rem;color:var(--parchment-dim);margin-top:14px;">
+            Demo verzija — plaćanje i slanje porudžbine se povezuju u koraku pre lansiranja.
+          </p>
+        </div>
+      </div>
+    `;
+
+    root.querySelectorAll("[data-inc]").forEach((b) =>
+      b.addEventListener("click", () => {
+        const line = readCart().find((l) => l.id === b.dataset.inc);
+        if (line) { setQty(line.id, line.qty + 1); renderCart(); }
+      })
+    );
+    root.querySelectorAll("[data-dec]").forEach((b) =>
+      b.addEventListener("click", () => {
+        const line = readCart().find((l) => l.id === b.dataset.dec);
+        if (line) { setQty(line.id, line.qty - 1); renderCart(); }
+      })
+    );
+    root.querySelectorAll("[data-remove]").forEach((b) =>
+      b.addEventListener("click", () => { removeFromCart(b.dataset.remove); renderCart(); })
+    );
+    const checkoutBtn = document.getElementById("checkout-btn");
+    if (checkoutBtn) {
+      checkoutBtn.addEventListener("click", () => {
+        alert("Ovo je demo za pitch prezentaciju — pravo plaćanje se dodaje u finalnoj Webflow verziji.");
+      });
+    }
   }
-];
 
-const CATEGORIES = [
-  { key: "verenicko", label: "Vereničko prstenje", purity: "585", blurb: "Parovi za veliki dan" },
-  { key: "burme", label: "Burme", purity: "585", blurb: "Svaki profil, svaka širina" },
-  { key: "zlatno", label: "Zlatno prstenje", purity: "585", blurb: "Za svaki dan" },
-  { key: "srebrno", label: "Srebrno prstenje", purity: "925", blurb: "Lagano i pristupačno" },
-  { key: "zlatnici", label: "Zlatnici", purity: "986", blurb: "Investicija u zlatu" },
-  { key: "ogrlice", label: "Ogrlice", purity: "585", blurb: "Lančići i privesci" },
-  { key: "narukvice", label: "Narukvice", purity: "585", blurb: "Klasika i pletivo" },
-  { key: "mindjuse", label: "Minđuše", purity: "375", blurb: "Za svaki dan i svečanost" },
-  { key: "brendovi", label: "Brendovi", purity: "925", blurb: "Disney, Aquaforte, Camurria" }
-];
-
-function formatRSD(amount) {
-  return amount.toLocaleString("sr-RS") + " RSD";
-}
-
-function getProductById(id) {
-  return PRODUCTS.find((p) => p.id === id);
-}
+  renderCart();
+</script>
+</body>
+</html>
